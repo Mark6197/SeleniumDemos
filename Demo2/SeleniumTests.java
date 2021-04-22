@@ -134,31 +134,31 @@ public class SeleniumTests {
         Assertions.assertEquals("You logged into a secure area!\n×",text);
     }
 
-    @Test
+     @Test
     public void testAlerts() {
         driver.get("http://the-internet.herokuapp.com/javascript_alerts");
         driver.findElement(By.xpath("//*[@id=\"content\"]/div/ul/li[1]/button")).click();
-        driver.switchTo().alert().accept();
+        driver.switchTo().alert().accept();//Switch to the alert and accept it
         String resultText=driver.findElement(By.id("result")).getText();
         Assertions.assertEquals("You successfully clicked an alert", resultText);
 
         driver.findElement(By.xpath("//*[@id=\"content\"]/div/ul/li[2]/button")).click();
-        driver.switchTo().alert().accept();
+        driver.switchTo().alert().accept();//Switch to the alert and accept it
         resultText=driver.findElement(By.id("result")).getText();
         Assertions.assertEquals("You clicked: Ok", resultText);
 
         driver.findElement(By.xpath("//*[@id=\"content\"]/div/ul/li[2]/button")).click();
-        driver.switchTo().alert().dismiss();
+        driver.switchTo().alert().dismiss();//Switch to the alert and deny it
         resultText=driver.findElement(By.id("result")).getText();
         Assertions.assertEquals("You clicked: Cancel", resultText);
 
         driver.findElement(By.xpath("//*[@id=\"content\"]/div/ul/li[3]/button")).click();
-        driver.switchTo().alert().sendKeys("Hello");
-        driver.switchTo().alert().accept();
+        driver.switchTo().alert().sendKeys("Hello");//Switch to the alert and send text
+        driver.switchTo().alert().accept();//Switch to the alert and accept it
         resultText=driver.findElement(By.id("result")).getText();
         Assertions.assertEquals("You entered: Hello", resultText);
     }
-
+    
     @AfterEach
     public void cleanUp() {
         driver.quit(); // close the browser
