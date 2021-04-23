@@ -52,6 +52,19 @@ public class SeleniumTests {
         WebElement result = driver.findElement(By.id("result"));//Get the result label by it's id
         Assertions.assertEquals("You entered: X", result.getText());//The program writes only the last character that was entered to the result label
     }
+    
+     @Test
+    public void testCheckBox() {
+        driver.get("http://the-internet.herokuapp.com/checkboxes");
+        WebElement checkbox1= driver.findElement(By.cssSelector("#checkboxes > input[type=checkbox]:nth-child(1)"));//Get the first checkbox by it's css selector(the css selector can be extracted easily from the dev tools,
+        // right click on element=>copy=>copy selector)
+        WebElement checkbox2= driver.findElement(By.cssSelector("#checkboxes > input[type=checkbox]:nth-child(3)"));//Get the second checkbox by it's css selector
+        Assertions.assertFalse(checkbox1.isSelected());//The first check box should not be selected
+        Assertions.assertTrue(checkbox2.isSelected());//The second check box should be selected
+
+        checkbox1.click();//Click on first check box
+        Assertions.assertTrue(checkbox1.isSelected());//Now the first check box is selected
+    }
 
     @Test
     public void testSelectList() {
