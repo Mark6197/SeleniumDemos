@@ -21,7 +21,7 @@ public class HelloWorldTestTest {
   JavascriptExecutor js;
   @Before
   public void setUp() {
-    System.setProperty("webdriver.chrome.driver", "E:/Selenium/Drivers/chromedriver.exe");
+    System.setProperty("webdriver.chrome.driver", "E:/Selenium/Drivers/chromedriver.exe");//Added manually. Not always neccessary. In my case it was neccessary beacuse of on error.
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
